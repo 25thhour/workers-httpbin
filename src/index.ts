@@ -81,7 +81,7 @@ router.get("/ip", async (r: Request) => {
 });
 
 router.get("/headers", async (r: Request) => {
-  return new Response(JSON.stringify(Object.fromEntries(r.headers)), {
+  return new Response(JSON.stringify(Object.fromEntries(r.headers), null, 2), {
     headers: { "content-type": "application/json" },
   });
 });
@@ -114,7 +114,7 @@ router.all(
           "Returns a response and status code matching the requested status code.",
         "/user-agent": "Return the user agent.",
         "/uuid": "Generates a v4 UUID.",
-      }),
+      }, null, 2),
       { status: 404, headers: { "content-type": "application/json" } }
     )
 );
